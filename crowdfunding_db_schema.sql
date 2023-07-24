@@ -1,22 +1,16 @@
--- Drop tables if they exist
+--Create tables, drop them if they exist
 
-DROP TABLE IF EXISTS 
-	Campaign,
-	Category,
-	Contacts,
-	Subcategory;
-
---Create tables
-
-CREATE TABLE "Category" (
-    "category_id" varchar   NOT NULL,
-    "category" varchar   NOT NULL,
+DROP TABLE IF EXISTS category;
+CREATE TABLE "category" (
+    "category_id" varchar NOT NULL,
+    "category" varchar NOT NULL,
     CONSTRAINT "pk_Category" PRIMARY KEY (
         "category_id"
      )
 );
 
-CREATE TABLE "Contacts" (
+DROP TABLE IF EXISTS contacts;
+CREATE TABLE "contacts" (
     "contact_id" int NOT NULL,
     "first_name" varchar NOT NULL,
     "last_name" varchar NOT NULL,
@@ -26,7 +20,8 @@ CREATE TABLE "Contacts" (
      )
 );
 
-CREATE TABLE "Subcategory" (
+DROP TABLE IF EXISTS subcategory;
+CREATE TABLE "subcategory" (
     "subcategory_id" varchar NOT NULL,
     "subcategory" varchar NOT NULL,
     CONSTRAINT "pk_Subcategory" PRIMARY KEY (
@@ -34,7 +29,8 @@ CREATE TABLE "Subcategory" (
      )
 );
 
-CREATE TABLE "Campaign" (
+DROP TABLE IF EXISTS campaign;
+CREATE TABLE "campaign" (
     "cf_id" int NOT NULL,
     "contact_id" int NOT NULL,
     "company_name" varchar NOT NULL,
@@ -45,7 +41,7 @@ CREATE TABLE "Campaign" (
     "backers_count" int NOT NULL,
     "country" varchar NOT NULL,
     "currency" varchar NOT NULL,
-    "launched_date" date NOT NULL,
+    "launch_date" date NOT NULL,
     "end_date" date NOT NULL,
     "category_id" varchar NOT NULL,
     "subcategory_id" varchar NOT NULL,
@@ -54,11 +50,11 @@ CREATE TABLE "Campaign" (
      )
 );
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_contact_id" FOREIGN KEY("contact_id")
-REFERENCES "Contacts" ("contact_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_contact_id" FOREIGN KEY("contact_id")
+REFERENCES "contacts" ("contact_id");
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_category_id" FOREIGN KEY("category_id")
-REFERENCES "Category" ("category_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_category_id" FOREIGN KEY("category_id")
+REFERENCES "category" ("category_id");
 
-ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_subcategory_id" FOREIGN KEY("subcategory_id")
-REFERENCES "Subcategory" ("subcategory_id");
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_subcategory_id" FOREIGN KEY("subcategory_id")
+REFERENCES "subcategory" ("subcategory_id");
