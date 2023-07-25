@@ -123,7 +123,7 @@ Verify that each table has the correct data by running a SELECT statement for ea
 
 ## Description
 
-We created a database schema in SQL for four tables: Category, Contacts, Subcategory, and Campaign. The four tables were created with four primary keys (category_id, contact_id, subcategory_id, cf_id) and three foreign keys connecting them together. We also created ERD to visualize the relationships between the tables.
+I started by creating a database schema in SQL for four tables: Category, Contacts, Subcategory, and Campaign. The four tables were created with four primary keys (category_id, contact_id, subcategory_id, cf_id) and three foreign keys connecting them together. I also created ERD to visualize the relationships between the tables.
 
 # References
 
